@@ -294,29 +294,35 @@ def generate_otp():
     return str(random.randint(100000, 999999))
 
 def init_db():
-    conn = get_db_connection()
-    c = conn.cursor()
-    c.execute('''
-            CREATE TABLE IF NOT EXISTS users (
-            id SERIAL PRIMARY KEY,
-            name TEXT NOT NULL,
-            email TEXT UNIQUE NOT NULL,
-            password TEXT,
-            news_type TEXT DEFAULT 'tech'
-        )
-    ''')
+    try:
+        print("✅ Running init_db()...")
+        conn = get_db_connection()
+        c = conn.cursor()
+        c.execute('''
+                CREATE TABLE IF NOT EXISTS users (
+                id SERIAL PRIMARY KEY,
+                name TEXT NOT NULL,
+                email TEXT UNIQUE NOT NULL,
+                password TEXT,
+                news_type TEXT DEFAULT 'tech'
+            )
+        ''')
 
-    c.execute("""
-        CREATE TABLE IF NOT EXISTS archives (
-            id SERIAL PRIMARY KEY,
-            subject TEXT,
-            body TEXT,
-            category TEXT,
-            sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    """)
-    conn.commit()
-    conn.close()
+        c.execute("""
+            CREATE TABLE IF NOT EXISTS archives (
+                id SERIAL PRIMARY KEY,
+                subject TEXT,
+                body TEXT,
+                category TEXT,
+                sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+        conn.commit()
+        print("✅ Tables created or verified.")
+    except Exception as e:
+        print("❌ Error in init_db():", e)
+    finally:
+        conn.close()
 
 
 @app.context_processor
