@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+ -login
+{% endblock %} 
+
+{% block main %}
+<a class="Back" href="/">&larr;</a>
+    <h1 class="email">Login:</h1>
+    <form method="POST">
+    <input class="email-input" type="email" name="email" placeholder="Enter your email" autofocus required>
+    <button class="email-submit" type="submit">Login</button>
+    </form>
+
+{% endblock %} 

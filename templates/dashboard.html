@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+ -Dashboard
+{% endblock %} 
+
+{% block main %}
+    <h1 class="title">Welcome to your Dashboard</h1>
+    <p class="description">Here you can manage your subscriptions and preferences.</p>
+    <p class="description">You will get news every week on Sunday</p>
+
+    <section class="dashboard-content">
+        <h2 class="title">Your Subscriptions</h2>
+        <table class="table-custom" >
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">News Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>{{ name2 }}</td>
+                    <td>{{ news }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <h2 class="title">Archived Newsletters:</h2>
+    <section class="archive">
+        {% for id, subject, body, category, sent_at in archives %}
+        <div class="box">
+            <div class="newsletter-item">
+                 <a class="archive-link" href="{{ url_for('archive_detail', archive_id=id) }}">Read here</a>
+                <h3> {{ subject }} </h3>
+                <p> {{ body[:100] }}...</p>
+                <p> {{ category }} </p>
+                <p> {{ sent_at }} </p>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+    </section>
+
+{% endblock %}

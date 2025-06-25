@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+-Settings
+{% endblock %}
+
+{% block main %}
+<a class="Back" href="/Dashboard">&larr;</a>
+<h2 class="title">Settings</h2>
+<form method="POST">
+    <h3 class="title">Change Password:</h3>
+    <input class="password-input" type="password" name="new_password" placeholder="New Password"
+        required autocomplete="off"><br>
+    <input class="password-input" type="password" name="confirm_password"
+        placeholder="Confirm Password" required autocomplete="off">
+    <button class="password-button" type="submit" name="action" value="change_password">Change
+        Password</button>
+</form>
+
+<h3 class="title">Preferences:</h3>
+<form method="POST">
+    <label class="form-label" for="news">Select News Type:</label>
+    <select name="news" id="news">
+        <option value="none" selected disabled>Select News</option>
+        <option value="tech" {% if news == 'tech' %} selected {% endif %}>Tech News</option>
+        <option value="anime" {% if news == 'anime' %} selected {% endif %}>Anime News</option>
+        <option value="both" {% if news == 'both' %} selected {% endif %}>Both</option>
+    </select>
+    <button class="form-button" type="submit" name="action" value="preferences">Update Preferences</button>
+</form>
+
+<form method="POST">
+    <h3 class="title">Unsubscribe:</h3>
+    <p class="form-label">Enter your email to confirm:</p>
+    <input class="form-input" type="email" name="unsubscribe_email" placeholder="Email" required>
+    <button class="form-button2" type="submit" name="action" value="unsubscribe">Unsubscribe</button>
+    <button class="sorry" value="unsubscribe" type="submit" name="action">Sorry in advance. click here to know more about how to delete your account.</button>
+</form>
+
+{% endblock %}

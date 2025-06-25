@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,800&display=swap"
+            rel="stylesheet">
+        <title>M&#x1F435;nkey Bytes - Verify</title>
+
+        <link as="image" href="/static/logo2.png" rel="icon">
+        <script>
+        document.getElementById('otp-resend').addEventListener('click', async() => {
+            const response = await fetch('/resend', {
+                method: 'POST',
+            });
+            const data = await response.text();
+            document.getElementById('messageBox').innerText = 'OTP resent!';
+        });
+    </script>
+    </head>
+    <nav><section class="navsection">
+            <section class="sectionright">
+                <a href="/"><img class="logo" src="/static/perfectlogo.png"
+                        alt></a>
+            </section>
+            <section class=" sectionleft">
+                <ul class="navbar-nav ms-auto mt-2">
+                    <li class="nav-item"><a class="nav-link"
+                            href="/">Register</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                            href="/login">Log In</a></li>
+                </ul>
+                <div class="container-toggle">
+                    <button id="themeToggle"><img
+                            src="/static/bedtime_24dp_E3E3E3_FILL1_wght400_GRAD0_opsz24.svg"
+                            alt> <img
+                            src="/static/clear_day_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+                            alt></button>
+                </div>
+            </section>
+        </section>
+    </nav>
+    <script>
+        // Set initial theme based on localStorage or default to light
+            const body = document.body;
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            body.classList.add(savedTheme + '-mode');
+
+        // Toggle theme on button click
+            document.getElementById('themeToggle').addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+                body.classList.toggle('dark-mode');
+
+        // Save current theme
+            const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+    });
+    </script>
+</nav>
+    <body>
+                    {% set messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+<form method="POST">
+    <a class="Back" href="/login">&larr;</a>
+    <h3 class="otp">Enter OTP:</h3><br>
+    <input class="otp-input" type="text" name="otp" placeholder="Enter your OTP" required>
+    <button class="otp-resend" type="button" onclick="window.location.href='/resend'">Resend OTP</button>
+    <br>
+    <div id="messageBox"></div>
+    <button class="otp-button" type="submit">Verify</button>
+</form>
+
+</body>

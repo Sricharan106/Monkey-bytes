@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+ -Register
+{% endblock %} 
+
+{% block main %}
+<h1 class="formtitle">Register:</h1>
+<a class="Back" href="/">&larr;</a>
+    <form method="POST">
+        <label class="label" for="name">Name:</label>
+        <input class="name" type="text" name="name" placeholder="Enter your name" required><br>
+        <label class="label" for="dob">Date of Birth:</label>
+        <input class="dob" type="date" name="dob" placeholder="Enter your date of birth" required><br>
+        <label class="label" for="email">Email:</label>
+        <input class="email-form" type="email" name="email" value="{{ pending_email }}" readonly
+         style="background:#eee"><br>
+        <label class="label" for="news">Select News Type:</label>
+            <select class="news" name="news" id="news">
+                <option value="tech">Tech News</option>
+                <option value="anime">Anime News</option>
+            </select><br>
+        <button class="subscribe" type="submit">Subscribe to Monkey Bytes</button>
+    </form>
+{% endblock %}

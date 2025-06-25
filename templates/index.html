@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block main %}
+    <div class="container-logo">
+        <img class="monkeyholding" src="/static/monkey-holding-email.png" alt="monkey-holding-email">
+        <h1>M&#x1F435;nkey Bytes</h1>
+        <p class="tagline">The best newsletter for monkeys… and lazy programmers!</p>
+        <form method="POST" action="/">
+            <input type="email" placeholder="Enter your email" id="emailinput" name="email" autocomplete="off"  required>
+            <button type="submit" id="subscribebutton">Subscribe</button>
+        </form>
+    </div>
+{% endblock %} 
