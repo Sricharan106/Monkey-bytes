@@ -373,7 +373,11 @@ def resend():
     flash('Session expired. Please log in again.', 'danger')
     return redirect('/login')
 
+init_db()
+@app.route('/initdb')
+def trigger_init_db():
     init_db()
+    return "✅ Database initialised!"
 
 if __name__ == '__main__':
     app.run(debug=True)
