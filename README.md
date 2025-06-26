@@ -4,11 +4,36 @@ Monkey Bytes is a clean newsletter web app that lets users subscribe to specific
 
 ## 📽 Demo Video
 
-[Watch the Demo](https://youtu.be/ASr6aP6JxlU)  
+[Watch the Demo](https://youtu.be/ASr6aP6JxlU)
 
 ## 🌐 Live Demo
 
 Try it live: [https://monkey-bytes.onrender.com](https://monkey-bytes.onrender.com)
+
+##  Description
+
+Monkey Bytes is a full-featured newsletter web application that allows users to subscribe to curated news categories like Tech, Sports, and Entertainment. It features email verification using OTP, and lets users log in securely and manage their dynamic news preferences via a dashboard. This project was built using Flask and PostgreSQL to handle backend logic and database storage. I built this as part of CS50x to explore full-stack development, improve my skills with Python web frameworks, and work with user authentication and theming features. Users can toggle between light/dark modes, view archived news, and receive real-time alerts for form actions.
+- 📧 **Email Signup with OTP Verification**
+  Users verify their identity through a one-time password sent via email, enhancing security without relying solely on traditional passwords.
+
+- 🔐 **Login with Password or OTP**
+  Offers flexibility by allowing users to either log in using a saved password or request a new OTP each time.
+
+- 📰 **Customizable Category Subscriptions**
+  Users can select one or more news categories (Tech, Anime and Both) during registration or through their dashboard. Future emails only include their selected preferences.
+
+- 📋 **Personalized Dashboard**
+  Logged-in users get access to a dashboard where they can manage their subscription settings, switch themes, and view their archive.
+
+- 🌗 **Dark/Light Mode Toggle**
+  A clean UI with an accessible toggle for theme preference. Your preference persists between sessions.
+
+- 🗃 **Archive System**
+  View previous newsletter posts in a dedicated archive section — useful for catching up or revisiting important updates.
+
+- ⚠️ **Alerts and Notifications**
+  Friendly form validations, flash messages, and UI alerts for every major user action (e.g., signup errors, login success, subscription changes).
+
 
 ## 💡 Features
 
